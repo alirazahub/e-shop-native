@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import {
     View,
     Text,
@@ -13,12 +15,15 @@ const SignUpScreen = (props) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [showPassword, setShowPassword] = useState(true);
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    }
 
 
     const onSubmit = async () => {
         try {
-            const response = await fetch('http://192.168.10.8:3000/api/signup', {
+            const response = await fetch('http://192.168.10.5:3000/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,7 +50,7 @@ const SignUpScreen = (props) => {
                     'Success',
                     'You have successfully signed up!',
                     [
-                        { text: 'Go to Sign In', onPress: () => props.navigation.navigate("signin") },
+                        { text: 'Go to Sign In', onPress: () => props.navigation.replace("signin") },
                     ],
                     { cancelable: false }
                 );
@@ -90,8 +95,31 @@ const SignUpScreen = (props) => {
                 placeholder="Password"
                 value={password}
                 onChangeText={value => setPassword(value)}
-                secureTextEntry
+                secureTextEntry={showPassword}
             />
+            <TouchableOpacity
+                onPress={toggleShowPassword}
+                style={{ flexDirection: 'row', alignItems: 'center' }}
+            >
+                <Text style={{ fontSize: 15, fontWeight: '500', color: 'rgba(0,0,0,0.7)' }}>
+                    Show Password
+                </Text>
+                {showPassword ? (
+                    <Icon
+                        name="eye-slash"
+                        size={20}
+                        color="rgba(0,0,0,0.7)"
+                        style={{ marginLeft: 10 }}
+                    />
+                ) : (
+                    <Icon
+                        name="eye"
+                        size={20}
+                        color="rgba(0,0,0,0.7)"
+                        style={{ marginLeft: 10 }}
+                    />
+                )}
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => onSubmit()} style={styles.button}>
                 <Text style={styles.text}>Sign Up</Text>
             </TouchableOpacity>

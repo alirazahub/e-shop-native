@@ -1,15 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     StyleSheet,
     Text,
     View,
-    Image,
-    TouchableOpacity,
-    FlatList
+    TouchableOpacity
 } from 'react-native';
 
-const HomePage = () => {
+const HomePage = (props) => {
     const [email, setEmail] = useState('');
+    useEffect(() => {
+        async function checkToken() {
+            const token = await AsyncStorage.getItem('token');
+            const response = await fetch('http://192.168.10.5:3000/check', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            setEmail(data.email);
+        }
+        checkToken();
+
+    }, []);
+
+    const hanldeLogout = async () => {
+        try {
+            await AsyncStorage.removeItem('token');
+            props.navigation.replace('signin');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -18,6 +44,19 @@ const HomePage = () => {
             <View style={styles.body}>
                 <Text style={styles.bodyText1}>{`Your Email is: ${email}`}</Text>
                 <Text style={styles.bodyText}>Welcome to the Pets Ecommerce Store! We have a wide range of products for all your pet needs. Whether you need a food, toy, or even a new pet, we have you covered.</Text>
+                {/* Button to logout */}
+                <TouchableOpacity
+                    style={{
+                        backgroundColor: 'red',
+                        padding: 10,
+                        margin: 10,
+                        borderRadius: 10,
+                    }}
+                    onPress={() => { hanldeLogout() }}
+                >
+                    <Text style={{ color: 'white', fontSize: 20 }}>Logout</Text>
+                </TouchableOpacity>
+
             </View>
         </View>
     )
