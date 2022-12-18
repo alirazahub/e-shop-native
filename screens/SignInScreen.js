@@ -43,7 +43,7 @@ const SignInScreen = (props) => {
         );
       } else {
         await AsyncStorage.setItem('token', data.token);
-        props.navigation.replace("home");
+        props.navigation.replace("Homee");
       }
     } catch (error) {
       Alert.alert(
@@ -59,7 +59,7 @@ const SignInScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="transparent" />
+      {/* <StatusBar backgroundColor="transparent" /> */}
       <Text style={styles.title}>Sign in to my App!</Text>
 
       <TextInput
@@ -101,7 +101,7 @@ const SignInScreen = (props) => {
       <TouchableOpacity onPress={onSubmit} style={styles.button}>
         <Text style={styles.text}>Sign In</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => props.navigation.replace("signup")} >
+      <TouchableOpacity onPress={() => props.navigation.navigate("Sign Up")} >
         <Text style={styles.alreadyHaveAccountText}>Don't have an account?</Text>
       </TouchableOpacity>
     </View>

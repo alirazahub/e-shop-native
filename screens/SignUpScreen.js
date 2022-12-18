@@ -76,7 +76,7 @@ const SignUpScreen = (props) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor="transparent" />
+            {/* <StatusBar backgroundColor="transparent" /> */}
             <Text style={styles.title}>Sign up to my App!</Text>
             <TextInput
                 style={styles.input}
@@ -123,7 +123,7 @@ const SignUpScreen = (props) => {
             <TouchableOpacity onPress={() => onSubmit()} style={styles.button}>
                 <Text style={styles.text}>Sign Up</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => props.navigation.navigate("signin")} >
+            <TouchableOpacity onPress={() => props.navigation.navigate("Sign In")} >
                 <Text style={styles.alreadyHaveAccountText}>Already have an account?</Text>
             </TouchableOpacity>
         </View>

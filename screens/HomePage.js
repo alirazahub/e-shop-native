@@ -30,7 +30,7 @@ const HomePage = (props) => {
     const hanldeLogout = async () => {
         try {
             await AsyncStorage.removeItem('token');
-            props.navigation.replace('signin');
+            props.navigation.replace('Sign In');
         } catch (error) {
             console.log(error);
         }
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        backgroundColor: '#fff',
     },
     header: {
         flex: 1,
