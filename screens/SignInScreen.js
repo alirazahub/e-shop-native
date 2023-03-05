@@ -10,6 +10,7 @@ import {
   StatusBar,
   Alert
 } from 'react-native';
+import url from '../key';
 
 const SignInScreen = (props) => {
   const [email, setEmail] = useState('');
@@ -19,42 +20,43 @@ const SignInScreen = (props) => {
     setShowPassword(!showPassword);
   }
   const onSubmit = async () => {
-    try {
-      const response = await fetch('http://192.168.10.5:3000/api/signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          password
-        })
-      }
-      );
-      const data = await response.json();
-      if (data.error) {
-        Alert.alert(
-          'Faliure',
-          data.error,
-          [
-            { text: 'OK', onPress: () => console.log('OK Pressed') },
-          ],
-          { cancelable: false }
-        );
-      } else {
-        await AsyncStorage.setItem('token', data.token);
-        props.navigation.replace("Homee");
-      }
-    } catch (error) {
-      Alert.alert(
-        'Faliure',
-        error.message,
-        [
-          { text: 'OK', onPress: () => console.log('OK Pressed') },
-        ],
-        { cancelable: false }
-      );
-    }
+    props.navigation.replace("Home");
+    // try {
+    //   const response = await fetch(`${url}/api/signin`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       email,
+    //       password
+    //     })
+    //   }
+    //   );
+    //   const data = await response.json();
+    //   if (data.error) {
+    //     Alert.alert(
+    //       'Faliure',
+    //       data.error,
+    //       [
+    //         { text: 'OK', onPress: () => console.log('OK Pressed') },
+    //       ],
+    //       { cancelable: false }
+    //     );
+    //   } else {
+    //     await AsyncStorage.setItem('token', data.token);
+    //     props.navigation.replace("Homee");
+    //   }
+    // } catch (error) {
+    //   Alert.alert(
+    //     'Faliure',
+    //     error.message,
+    //     [
+    //       { text: 'OK', onPress: () => console.log('OK Pressed') },
+    //     ],
+    //     { cancelable: false }
+    //   );
+    // }
   };
 
   return (

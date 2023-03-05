@@ -10,6 +10,7 @@ import {
     StatusBar,
     Alert
 } from 'react-native';
+import url from '../key';
 
 const SignUpScreen = (props) => {
     const [name, setName] = useState('');
@@ -23,7 +24,7 @@ const SignUpScreen = (props) => {
 
     const onSubmit = async () => {
         try {
-            const response = await fetch('http://192.168.10.5:3000/api/signup', {
+            const response = await fetch(`${url}/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
