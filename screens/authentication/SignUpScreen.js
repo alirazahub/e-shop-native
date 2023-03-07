@@ -7,14 +7,11 @@ import {
     TextInput,
     TouchableOpacity,
     StyleSheet,
-    StatusBar,
-    Alert
 } from 'react-native';
 
 const SignUpScreen = ({navigation}) => {
 
 
-    const onSubmit = async () => {}
 
     return (
         <View style={styles.container}>
@@ -38,7 +35,7 @@ const SignUpScreen = ({navigation}) => {
                     Forget Password.?
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => onSubmit()} style={styles.button}>
+            <TouchableOpacity onPress={() => navigation.navigate("Main")} style={styles.button}>
                 <Text style={styles.text}>Sign Up</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate("Sign In")} >
