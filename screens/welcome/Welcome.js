@@ -4,7 +4,7 @@ import { TouchableOpacity, View,Text,StyleSheet } from 'react-native'
 const Welcome = ({navigation}) => {
     return (
         <View>
-            <Text style={styles.text}>Welcome Screen</Text>
+            <Text style={styles.text}>Welcome Screen for my E SHOP</Text>
             <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate("Sign In")}>
                 <Text>Sign In</Text>
             </TouchableOpacity>
