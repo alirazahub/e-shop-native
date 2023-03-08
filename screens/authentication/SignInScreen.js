@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Image } from 'react-native';
 import {
   View,
   Text,
@@ -8,51 +9,37 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const SignInScreen = ({navigation}) => {
+const SignInScreen = ({ navigation }) => {
   const onSubmit = async () => {
     navigation.navigate("Main");
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign in to my App!</Text>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-      />
-      <TouchableOpacity
-        style={{ flexDirection: 'row', alignItems: 'center' }}
-      >
-        <Text style={{ fontSize: 15, fontWeight: '500', color: 'rgba(0,0,0,0.7)' }}>
-        Forget Password.?
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={onSubmit} style={styles.button}>
-        <Text style={styles.text}>Sign In</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Sign Up")} >
-        <Text style={styles.alreadyHaveAccountText}>Don't have an account?</Text>
-      </TouchableOpacity>
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 0.20 }}>
+        <Text style={styles.logo}>E SHOP</Text>
+      </View>
+      <View style={{ flex: 0.60 }}>
+        <Text>sa</Text>
+      </View>
+      <View style={{ flex: 0.20 }}>
+        <Text>sa</Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    margin: '10%',
+  logo:{
+    fontSize:40,
+    fontWeight:'bold',
+    color:'red',
+    alignSelf:'center',
+    borderWidth:1,
+    paddingVertical:5,
+    paddingHorizontal:25,
+    marginTop:7,
+    borderRadius:30
   },
   input: {
     padding: 10,
@@ -62,24 +49,6 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
     borderRadius: 5
   },
-  button: {
-    backgroundColor: '#00d278',
-    padding: 10,
-    width: '90%',
-    borderRadius: 5
-  },
-  text: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center'
-  },
-  alreadyHaveAccountText: {
-    marginTop: 10
-  }, showPasswordButton: {
-    paddingLeft: '85%',
-    paddingTop: 5
-  }
 });
 
 export default SignInScreen;
