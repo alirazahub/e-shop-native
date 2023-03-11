@@ -6,7 +6,7 @@ const Welcome = ({navigation}) => {
         <View>
             <Text style={styles.text}>Welcome Screen for my E SHOP</Text>
             <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate("Sign In")}>
-                <Text>Sign In</Text>
+                <Text>Sign In Here</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Sign Up")}>
                 <Text>Sign Up</Text>
