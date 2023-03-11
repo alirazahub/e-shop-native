@@ -24,13 +24,13 @@ const AuthNavigator = () => {
             fontSize: 30,
           },
           headerBackVisible: false,
-          // headerRight: () => (
-          //   <Button
-          //     onPress={() => alert('This is a button!')}
-          //     title="Info"
-          //     color="#fff"
-          //   />
-          // ),
+          headerRight: () => (
+            <Button
+              onPress={() => alert('This is a button!')}
+              title="Info"
+              color="#fff"
+            />
+          ),
         }} component={SignInScreen} />
       <Stack.Screen name="Sign Up" component={SignUpScreen} />
       <Stack.Screen name="Forget Password" component={ForgetPassword} />
