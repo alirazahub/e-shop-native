@@ -9,7 +9,7 @@ const Welcome = ({navigation}) => {
                 <Text>Sign In Here</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Sign Up")}>
-                <Text>Sign Up</Text>
+                <Text>Sign Up Here</Text>
             </TouchableOpacity>
         </View>
     )
