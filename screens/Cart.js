@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 const Cart = () => {
   return (
     <View>
-      <Text>Cart</Text>
+      <Text>This is Cart Screen</Text>
     </View>
   )
 }
