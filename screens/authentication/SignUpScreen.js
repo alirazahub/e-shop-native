@@ -7,26 +7,42 @@ import {
     TextInput,
     TouchableOpacity,
     StyleSheet,
+    Alert,
 } from 'react-native';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../../firebase';
 
-const SignUpScreen = ({navigation}) => {
+const SignUpScreen = ({ navigation }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
+    const handleSignUp = () => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                navigation.navigate("Main")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+    }
 
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Sign up to my App!</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Name"
-            />
+            
             <TextInput
                 style={styles.input}
                 placeholder="Email"
+                onChangeText={newText => setEmail(newText)}
             />
             <TextInput
                 style={styles.input}
                 placeholder="Password"
+                secureTextEntry={true}
+                onChangeText={newText => setPassword(newText)}
             />
             <TouchableOpacity
                 style={{ flexDirection: 'row', alignItems: 'center' }}
@@ -35,10 +51,10 @@ const SignUpScreen = ({navigation}) => {
                     Forget Password.?
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Main")} style={styles.button}>
+            <TouchableOpacity onPress={handleSignUp} style={styles.button}>
                 <Text style={styles.text}>Sign Up</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Sign In")} >
+            <TouchableOpacity >
                 <Text style={styles.alreadyHaveAccountText}>Already have an account?</Text>
             </TouchableOpacity>
         </View>

@@ -43,7 +43,7 @@ const SignInScreen = ({ navigation }) => {
             style={styles.btn}
             onPress={onSubmit}
           >
-            <Text style={{textAlign:'center', color:'orange', fontWeight:'bold'}}>Sign In</Text>
+            <Text style={{ textAlign: 'center', color: 'orange', fontWeight: 'bold' }}>Sign In</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
     color: 'orange',
     fontSize: 20
   },
-  btn:{
+  btn: {
     padding: 10,
     margin: 10,
-    width:100,
+    width: 100,
     borderRadius: 30,
     alignSelf: 'center',
     borderWidth: 1,
